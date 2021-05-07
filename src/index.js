@@ -1,17 +1,32 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {Component} from "react/cjs/react.production.min";
+//import App from './App';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+class App extends Component {
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    state = {};
+
+    componentDidMount() {
+        setInterval(this.hello, 250);
+    }
+
+    hello = () => {
+        fetch('/')
+            .then(response => response.text())
+            .then(message => {
+                this.setState({message: message});
+            });
+    };
+
+    render() {
+        return (
+            <div className="App">
+                <p className="App-intro">
+                    To get started, edit <code>src/App.js</code> and save to reload.
+                </p>
+            </div>
+        );
+    }
+}
+
