@@ -11,7 +11,7 @@ class App extends Component {
         this.state = {message: ">"};
     }
 
-    activateLasers() {
+    activateLasers = () => {
         this.setState({
             message: ">====="
         });
