@@ -17,10 +17,17 @@ class App extends Component {
         });
     }
 
+    deactivateLasers = () => {
+        this.setState({
+            message: ">"
+        });
+    }
+
     render() {
         return (
             <div>
                 <button onClick={this.activateLasers}>Activate Lasers</button>
+                <button onClick={this.deactivateLasers}>Deactivate Lasers</button>
                 <h2>{this.state.message}</h2>
             </div>
         );
