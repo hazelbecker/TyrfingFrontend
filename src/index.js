@@ -2,7 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {Component} from "react/cjs/react.production.min";
-//import App from './App';
+import Character from './character';
+import Equipment from './equipment';
+import Room from './room';
+
+let thisPlayer = new Character("player", 50, 50, 5, 1, null, null, 1);
+let thisEnemy = new Character("uwu", 25, 25, 5, 1, null, null, 2);
+let thisWeapon = new Equipment(5, 0);
+let thisArmor = new Equipment(0, 2);
+let room1 = new Room(1, null);
+let room2 = new Room(2, thisEnemy);
 
 class App extends Component {
 
@@ -11,25 +20,17 @@ class App extends Component {
         this.state = {message: ">"};
     }
 
-    activateLasers = () => {
+    buttonA = () => {
         this.setState({
             message: ">=====",
         });
         //this.state.player.currentHP = this.state.player.currentHP - 5;
     }
 
-    deactivateLasers = () => {
-        this.setState({
-            message: ">"
-        });
-        //this.state.player.currentHP = this.state.player.currentHP + 5;
-    } 
-
     render() {
         return (
             <div>
-                <button onClick={this.activateLasers}>Activate Lasers </button>
-                <button onClick={this.deactivateLasers}>Deactivate Lasers</button>
+                <button onClick={this.buttonA}>A</button>
                 <h2>{this.state.message}</h2>
             </div>
         );
