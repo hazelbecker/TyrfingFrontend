@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { View } from "react-native";
 import './index.css';
 import {Component} from "react/cjs/react.production.min";
 import {ACharacter} from "./character";
@@ -52,8 +53,8 @@ class App extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.buttonA}>A</button>
-                <button onClick={this.buttonB}>B</button>
+                <View style={{ width: 50, height: 20}}><button classname="buttonW" onClick={this.buttonA}>A</button></View>
+                <View style={{ width: 50, height: 20}}><button classname="buttonW" onClick={this.buttonB}>B</button></View>
                 <h2>{this.state.message}</h2>
             </div>
         );
