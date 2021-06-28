@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {Component} from "react/cjs/react.production.min";
-import Character from './character';
-import Equipment from './equipment';
-import Room from './room';
+import {ACharacter} from "./character";
+import {Equipment} from "./equipment";
+import {Room} from "./room";
 
-let thisPlayer = new Character("player", 50, 50, 5, 1, null, null, 1);
-let thisEnemy = new Character("uwu", 25, 25, 5, 1, null, null, 2);
+let thisPlayer = new ACharacter("player", 50, 50, 5, 1, null, null, 1);
+let thisEnemy = new ACharacter("uwu", 25, 25, 5, 1, null, null, 2);
 let thisWeapon = new Equipment(5, 0);
 let thisArmor = new Equipment(0, 2);
 let room1 = new Room(1, null);
