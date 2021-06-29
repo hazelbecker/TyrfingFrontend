@@ -42,7 +42,7 @@ class App extends Component {
     }
 
     buttonB = () => {
-        if(!battleFlag){
+        if(!battleFlag && thisPlayer.roomID < 2){
             thisPlayer.roomID = thisPlayer.roomID + 1;
             this.setState({
                 message: "You advance to the next room. Press A.",
