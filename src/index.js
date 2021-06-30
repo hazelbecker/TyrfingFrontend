@@ -22,6 +22,10 @@ class App extends Component {
         this.state = {message: "Welcome! You see a weapon on the floor. Press A to pick it up."};
     }
 
+    //battle = (aPlayer, anEnemy) => {
+    //
+    //}
+
     buttonA = () => {
         if(thisPlayer.roomID == 1 && room1.loot != null){
             thisPlayer.weapon = room1.loot;
@@ -33,9 +37,35 @@ class App extends Component {
             this.setState({
                 message: "Press B to advance to the next room. (You can do this at any (non-battle) time!).",
             });
-        }else if(thisPlayer.roomID == 2){
+        }else if(thisPlayer.roomID == 2 && room2.enemy != null && battleFlag == false){
             this.setState({
-                message: "You are in the second room!",
+                message: "You are in the second room! An enemy appears! Press A to attack.",
+            });
+            battleFlag = true;
+        }else if(thisPlayer.roomID == 2 && battleFlag == true){
+            let damageCalc = (thisPlayer.atk + thisWeapon.atkmod) - thisEnemy.def;
+            let playerDamageCalc = thisEnemy.atk - (thisPlayer.def + thisArmor.defmod);
+            if(playerDamageCalc < 1){
+                playerDamageCalc = 1;
+            }
+            if(damageCalc < 1){
+                damageCalc = 1;
+            }
+            thisEnemy.currentHP = thisEnemy.currentHP - damageCalc;
+            if(thisEnemy.currentHP <= 0){
+                this.setState({
+                    message: "The enemy was defeated! Its HP is " + thisEnemy.currentHP,
+                });
+                room2.enemy = null;
+                battleFlag = false;
+            }else{
+                this.setState({
+                    message: "You attack! The enemy's HP is " + thisEnemy.currentHP,
+                });
+            }
+        }else if(thisPlayer.roomID == 2 && battleFlag == false){
+            this.setState({
+                message: "You win!",
             });
         }
         //this.state.player.currentHP = this.state.player.currentHP - 5;
